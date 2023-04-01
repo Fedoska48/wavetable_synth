@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import numpy as np
 import scipy.io.wavfile as wav
 
@@ -54,7 +56,9 @@ def main():
 
     output = fade_in_out(output)
 
-    wav.write('saw440hzInterpolatedLinearlyFaded.wav', sample_rate,
+    results_dir = Path(__file__).parent / 'results'
+    results_dir.mkdir(exist_ok=True)
+    wav.write(f'{results_dir}\saw{freq}hz_{waveform.__name__}', sample_rate,
               output.astype(np.float32))
 
     gain = -20
