@@ -1,1 +1,1 @@
-# waves_table_synth
+# wavetable_synth
